@@ -98,5 +98,41 @@
             }
             return $patients;
         }
+
+        function update($new_name)
+        {
+            $executed = $GLOBALS['DB']->exec("UPDATE doctors SET name = '{$new_name}' WHERE id = {$this->getId()};");
+            if ($executed) {
+                $this->setName($new_name);
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        function updateSpecialty($new_specialty)
+        {
+            $executed = $GLOBALS['DB']->exec("UPDATE doctors SET specialty = '{$new_specialty}' WHERE id = {$this->getId()};");
+            if ($executed) {
+                $this->setSpecialty($new_specialty);
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        function delete()
+        {
+            $executed = $GLOBALS['DB']->exec("DELETE FROM doctors WHERE id = {$this->getId()};");
+            if (!$executed) {
+                return false;
+            }
+            $executed = $GLOBALS['DB']->exec("DELETE FROM patients WHERE doctor_id = {$this->getId()};");
+            if (!$executed) {
+                return false;
+            } else {
+                return true;
+            }
+        }
     }
 ?>

@@ -3,9 +3,9 @@
     <title>Doctors Office</title>
   </head>
 <body>
-    <h1>Welcome to Your Doctor's Office</h1>
+    <h1>Welcome to the Doctor's Office</h1>
 
-    <p>Find your doctor:</p>
+    <p>Add the doctor:</p>
 
     <form action="/doctors" method="post">
         <label for="name">Doctor name:</label>
@@ -16,10 +16,10 @@
     </form>
 
     {% if doctors is not empty %}
-        <p>Here are all your doctors:</p>
+        <p>Here are all of the doctors:</p>
         <ul>
             {% for doctor in doctors %}
-                <li><a href="/doctors/{{ doctor.getId }}">{{ doctor.getName }} : {{ doctor.getSpecialty }}</a></li>
+                <li><a href="/doctors/{{ doctor.getId }}">{{ doctor.getName }}</a> specializing in {{ doctor.getSpecialty }}</li>
             {% endfor %}
         </ul>
     {% else %}

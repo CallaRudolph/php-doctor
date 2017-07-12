@@ -9,7 +9,7 @@
       <p>Here are all your doctors:</p>
       <ul>
         {% for doctor in doctors %}
-            <li>{{ doctor.getName }}</li>
+            <li>{{ doctor.getName }}, specializing in {{ doctor.getSpecialty }}</li>
         {% endfor %}
       </ul>
     {% endif %}

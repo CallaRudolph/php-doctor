@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <title>Edit Doctor</title>
+  </head>
+  <body>
+    <h3>Update {{ doctor.getName }}'s info. This doctor specializes in {{ doctor.getSpecialty }}.</h3>
+
+    <form action="/doctors/{{ doctor.getId }}" method="post">
+      <input name="_method" type="hidden" value="patch">
+
+      <label for="name">Rename the doctor:</label>
+      <input id="name" name="name" type="text">
+
+      <label for="specialty">Change the doctor's specialty:</label>
+      <input id="specialty" name="specialty" type="text">
+
+      <button type="submit">Update</button>
+    </form>
+    <form action="/doctors/{{ doctor.getId }}" method="post">
+      <input name="_method" type="hidden" value="delete">
+
+      <button type="submit">Fire this doctor</button>
+    </form>
+  </body>
+</html>

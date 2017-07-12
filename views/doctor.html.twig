@@ -1,0 +1,35 @@
+
+<html>
+  <head>
+    <title>Doctor List</title>
+  </head>
+  <body>
+    <h1>{{ doctor.getName }}, specialty: {{ doctor.getSpecialty }}</h1>
+
+    {% if patients is not empty %}
+        <p>Here are your patients:</p>
+        <ul>
+            {% for patient in patients %}
+                <li>{{ patient.getPatientName }}</li>
+                <ul>
+                  <li>Birth date: {{ patient.getDob }}</li>
+                </ul>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <h4>Add a patient</h4>
+
+    <form action='/patients' method='post'>
+        <input id="doctor_id" name="doctor_id" type="hidden" value="{{ doctor.getId() }}">
+        <label for='name'>Patient Name</label>
+        <input id='name' name='name' type='text'><br>
+        <label for='dob'>Patient birthdate</label>
+        <input id='dob' name='dob' type='text'><br>
+
+        <button type='submit'>Add Patient</button>
+    </form>
+    <p><a href="/doctors/{{ doctor.getId }}/edit">Edit this doctor</a></p>
+    <p><a href='/'>Home</a></p>
+  </body>
+</html>

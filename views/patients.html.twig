@@ -1,0 +1,31 @@
+
+<html>
+<head>
+    <title>Patient List</title>
+</head>
+<body>
+    <h1>Here are the patients</h1>
+
+    {% if patients is not empty %}
+        <p>Here are all the patients:</p>
+        <ul>
+            {% for patient in patients %}
+                <li>{{ patient.getDescription }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <form action='/patient' method='post'>
+        <label for='name'>Patient Name</label>
+        <input id='name' name='name' type='text'>
+        <label for='dob'>Patient Birthday</label>
+        <input id='dob' name='dob' type='text'>
+        <button type='submit'>Add patient</button>
+    </form>
+    <form action='/delete_patient' method='post'>
+        <button type='submit'>Remove patient</button>
+    </form>
+
+    <p><a href='/'>Home</a></p>
+</body>
+</html>
