@@ -50,7 +50,7 @@
 
         static function getAll()
         {
-          $returned_doctors = $GLOBALS['DB']->query("SELECT * FROM doctors;");
+          $returned_doctors = $GLOBALS['DB']->query("SELECT * FROM doctors ORDER BY name ASC;");
           $doctors = array();
           foreach($returned_doctors as $doctor) {
               $name = $doctor['name'];
@@ -87,7 +87,7 @@
         function getPatients()
         {
             $patients = array();
-            $returned_patients = $GLOBALS['DB']->query("SELECT * FROM patients WHERE doctor_id = {$this->getId()};");
+            $returned_patients = $GLOBALS['DB']->query("SELECT * FROM patients WHERE doctor_id = {$this->getId()} ORDER BY name ASC;");
             foreach($returned_patients as $patient) {
                 $patient_name = $patient['name'];
                 $dob = $patient['birthday'];
